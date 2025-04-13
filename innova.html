@@ -1,0 +1,157 @@
+
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>INNOVA - Tu plataforma digital</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        header {
+            background-color: #007bff;
+            color: white;
+
+            padding: 20px;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        nav {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        main {
+            padding: 20px;
+        }
+        .hidden {
+            display: none;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        footer {
+            background-color: #333;
+            color: white;
+            padding: 15px;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+        canvas {
+            max-width: 100%;
+        }
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+        }
+    </style>
+    <script>
+        function mostrarSeccion(seccion) {
+            document.querySelectorAll('.container').forEach(el => el.classList.add('hidden'));
+            document.getElementById(seccion).classList.remove('hidden');
+        }
+    </script>
+</head>
+<body>
+    <header>
+        Bienvenidos a INNOVA
+    </header>
+    <nav>
+        <button onclick="mostrarSeccion('inicio')">Inicio</button>
+        <button onclick="mostrarSeccion('servicios')">Servicios</button>
+        <button onclick="mostrarSeccion('contacto')">Contacto</button>
+        <button onclick="mostrarSeccion('analisis')">Herramienta de Análisis</button>
+        <button onclick="mostrarSeccion('calculadora')">Calculadora</button>
+    </nav>
+    <main>
+        <section id="inicio" class="container">
+            <h2>Explora nuestras soluciones digitales</h2>
+            <p>INNOVA es tu mejor opción para herramientas digitales y automatización.</p>
+        </section>
+        <section id="servicios" class="container hidden">
+            <h2>Nuestros Servicios</h2>
+            <p>📊 Herramientas de análisis financiero</p>
+        </section>
+        <section id="contacto" class="container hidden">
+            <h2>Contacto</h2>
+            <p><strong>Nombre:</strong> Alejandro Monsalve</p>
+            <p><strong>Teléfono:</strong> 3052319299</p>
+            <p><strong>Instagram:</strong> <a href="https://instagram.com/alejandromonsalve" target="_blank">@alejandromonsalve</a></p>
+            <p><strong>Correo:</strong> <a href="mailto:alejobmx431xxx@gmail.com">alejobmx431xxx@gmail.com</a></p>
+        </section>
+        <section id="analisis" class="container hidden">
+            <h2>Herramienta de Análisis de Mercados</h2>
+            <p>Visualización en tiempo real con velas japonesas.</p>
+            <iframe src="https://charts.deriv.com/deriv"></iframe>
+        </section>
+        <section id="calculadora" class="container hidden">
+            <h2>Calculadora Científica</h2>
+            <input type="text" id="display" disabled>
+            <br>
+            <button onclick="addToDisplay('7')">7</button>
+            <button onclick="addToDisplay('8')">8</button>
+            <button onclick="addToDisplay('9')">9</button>
+            <button onclick="clearDisplay()">C</button>
+            <br>
+            <button onclick="addToDisplay('4')">4</button>
+            <button onclick="addToDisplay('5')">5</button>
+            <button onclick="addToDisplay('6')">6</button>
+            <button onclick="addToDisplay('+')">+</button>
+            <br>
+            <button onclick="addToDisplay('1')">1</button>
+            <button onclick="addToDisplay('2')">2</button>
+            <button onclick="addToDisplay('3')">3</button>
+            <button onclick="addToDisplay('-')">-</button>
+            <br>
+            <button onclick="addToDisplay('0')">0</button>
+            <button onclick="addToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="addToDisplay('/')">/</button>
+            <br>
+            <button onclick="addToDisplay('*')">*</button>
+            <script>
+                function addToDisplay(value) {
+                    document.getElementById('display').value += value;
+                }
+                function clearDisplay() {
+                    document.getElementById('display').value = '';
+                }
+                function calculate() {
+                    try {
+                        document.getElementById('display').value = eval(document.getElementById('display').value);
+                    } catch {
+                        document.getElementById('display').value = 'Error';
+                    }
+                }
+            </script>
+        </section>
+    </main>
+    <footer>
+        &copy; 2025 - INNOVA | Todos los derechos reservados.
+    </footer>
+
+</body>
+</html>
